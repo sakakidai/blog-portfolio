@@ -15,6 +15,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 #追加したgem
 gem "devise"
+gem 'devise-bootstrap-views', '~> 1.0'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
