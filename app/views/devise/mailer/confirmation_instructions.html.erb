@@ -1,5 +1,6 @@
-<p>Welcome <%= @email %>!</p>
+<p>こんにちは！ <%= @name %>さん</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Blog Portfolioへのサインアップありがとうございます！アカウントを有効にするには、以下のボタンをクリックしてメール
+アドレスの認証を行ってください。</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'アカウントの承認へ', confirmation_url(@resource, confirmation_token: @token),class: "btn btn-primary" %></p>

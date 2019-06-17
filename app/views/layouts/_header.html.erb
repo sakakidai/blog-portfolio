@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <%= link_to 'Blog Portfolio', root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">ブログ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ユーザー一覧</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          カテゴリー
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">フォロー</a>
+            <a class="dropdown-item" href="#">フォロワー</a>
+            <%= link_to "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="navbar-nav md-form-inline">
+    <% if user_signed_in? %>
+      <li class="nav-item mr-3 mt-2">
+        <%= link_to "記事作成", "#", class: "btn btn-sm btn-outline-success"%>
+      </li>
+      <li class="nav-item mt-2">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-success"%>
+      </li>
+    <% else %>
+      <li class="nav-item mr-3 mt-2">
+        <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-sm btn-outline-success"%>
+      </li>
+      <li class="nav-item mt-2">
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-sm btn-outline-success"%>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</nav>
