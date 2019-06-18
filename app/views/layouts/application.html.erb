@@ -11,11 +11,36 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <div class='container'>
-      <%= render "layouts/flash" %>
-      <%= yield %>
-    </div>
-    <%= render 'layouts/footer' %>
+    <% if controller_action_selects %>
+
+      <div class='cover cover-selects'>
+
+        <% if user_signed_in? && current_user.top_image.present? %>
+          <%= image_tag current_user.top_image.url, class: "background" %>
+        <% else %>
+          <div class='background background-photo'></div>
+        <% end %>
+        <%= render 'layouts/header' %>
+        <div class='container'>
+          <%= render "layouts/flash" %>
+          <div class='row'>
+            <div class='col-md-6 offset-md-3'>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+        <%= render 'layouts/footer' %>
+      </div>
+
+    <% else %>
+      
+      <div class='cover'>
+        <%= render 'layouts/header' %>
+          <%= render "layouts/flash" %>
+          <%= yield %>
+        <%= render 'layouts/footer' %>
+      </div>
+
+    <% end %>
   </body>
 </html>
