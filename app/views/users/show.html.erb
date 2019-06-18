@@ -1,4 +1,6 @@
+<%= image_tag @top_image.url if @top_image.present? %>
 <h1><%= @user.name %>さんのプロフィール</h1>
+<%= image_tag @avatar.thumb.url if @avatar.present? %>
 <p><%= @user.email %></p>
 <h2>作成した記事</h2>
 <% @blogs.each do |blog| %>

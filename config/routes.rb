@@ -7,4 +7,7 @@ Rails.application.routes.draw do
                                               sign_out: "logout", 
                                               sign_up:  "signup" 
                                             }
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end

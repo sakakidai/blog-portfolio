@@ -1,18 +1,128 @@
 @import "bootstrap";
 
+// 共通
+// 背景画像
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.background-photo {
+  background: image-url('tree.jpg') no-repeat;
+}
+
 // フォーム
 .user_delete_button {
   float: right;
 }
 
+.filefield_label {
+  margin-bottom: 0px;
+}
+
 // フッター
-.copy-right {
-  padding: 2.5rem 0;
-  background-color: #f9f9f9;
-  color: #999;
-  text-align: center;
+footer {
+  margin-top: auto;
 }
 
 .copy-right {
-  margin-top: 0;
+  padding: 2.5rem 0;
+  // background-color: #f9f9f9;
+  text-align: center;
 }
+
+
+// controller_action_selectのビュー
+.cover-selects {
+  color: white;
+
+  // ナビゲーションバー
+  .logo {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    margin: 0 10px;
+  }
+
+  .logo:hover {
+    text-decoration: none;
+    color: #2EFE2E;
+  }
+
+  .nav-link {
+    color: white!important;
+  }
+
+  .nav-link:hover {
+    color: #2EFE2E!important;
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .dropdown-item {
+    color: white;
+  }
+  .dropdown-item:hover {
+    color: #2EFE2E!important;
+  }
+
+  .navbar-toggler {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  // 背景画像
+  .background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    background-position: center;
+  }
+
+  // フォーム
+  .form-control {
+    opacity: 0.7;
+  }
+
+  // ボタン
+  .btn {
+    color: black;
+    background: white;
+  }
+
+  .btn:hover {
+    background: #2EFE2E;
+    color: white;
+    border: none;
+  }
+
+  // ナビのボタン
+  .nav-item {
+    .btn {
+      color: #2EFE2E;
+      background: none;
+    }
+  
+    .btn:hover {
+      background: #2EFE2E;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+
+
+
+
