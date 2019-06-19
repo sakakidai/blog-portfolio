@@ -24,4 +24,5 @@ module ApplicationHelper
     action_new || action_edit || controller_home || controller_blogs_renders || controller_registrations_renders
   end
 
+
 end

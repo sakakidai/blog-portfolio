@@ -9,22 +9,21 @@
     <%= f.label :body, class: 'label-body' %>
     <%= f.text_area :body, class: 'form-control', rows: 10, placeholder: '記事の内容' %>
   </div>
-
-  <%= f.fields_for :images, :html => { multipart: true } do |f| %>
-    <div class='form-group'>
-      <%= f.label :title, class: 'label-title' %>
-      <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
-    </div>
-    <label class='btn btn-outline btn-sm mb-3 filefield_label'>
-      画像の添付（ファイルを開く）
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', style: "display:none;" %>
-    </label>
-    <%= f.link_to_remove "写真リンクの削除", class: "btn btn-outline btn-sm mb-3" %>
-  <% end %>
-  <%= f.link_to_add "画像の追加", :images, class: "btn btn-outline btn-sm mb-3" %>
-
+  <h2 class='mb-2'>ブログ写真追加</h2>
+    <%= f.fields_for :images, :html => { multipart: true } do |f| %>
+      <div class='form-group'>
+        <%= f.label :title, class: 'label-title' %>
+        <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :picture, class: 'label-picture' %>
+        <%= f.file_field :picture, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
+      </div>
+      <%= f.link_to_remove "写真リンクの削除", class: "btn btn-primary btn-sm mb-3" %>
+    <% end %>
+    <span><%= f.link_to_add "画像の追加", :images, class: "btn btn-primary btn-sm mb-3" %></span>
   <div class='form-group'>
-    <%= f.submit nil, class: 'btn btn-outline'%>
+    <%= f.submit nil, class: 'btn btn-primary'%>
   </div>
 <% end %>
 

@@ -21,6 +21,8 @@ ja:
       user:
         current_password: "現在のパスワード"
         name: 名前
+        avatar: プロフィール画像
+        top_image: 背景画像
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
