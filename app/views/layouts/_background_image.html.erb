@@ -1,0 +1,5 @@
+<% if user_signed_in? && current_user.top_image.present? %>
+  <%= image_tag current_user.top_image.url, class: "background" %>
+<% else %>
+  <div class='background background-photo'></div>
+<% end %>

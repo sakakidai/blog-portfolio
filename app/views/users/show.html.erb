@@ -1,9 +1,17 @@
-<%= image_tag @top_image.url if @top_image.present? %>
-<h1><%= @user.name %>さんのプロフィール</h1>
-<%= image_tag @avatar.thumb.url if @avatar.present? %>
-<p><%= @user.email %></p>
-<h2>作成した記事</h2>
-<% @blogs.each do |blog| %>
-  <p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
-  <p>内容：<%= blog.body %></p>
-<% end %>
+<%= render 'users/user_top_image', user: @user %>
+
+<div class='container'>
+  <div class="row">
+    <div class="col-md-8">
+      <%= render @blogs %>
+    </div>
+    <div class="col-md-4 d-none d-md-block">
+      <%= image_tag @avatar.thumb.url, class: 'avatar-image' if @avatar.present? %>
+    </div>
+  </div>
+</div>
+
+
+
+
+

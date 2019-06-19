@@ -9,15 +9,15 @@
     <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
   </div>
   
-  <label class='btn btn-outline btn-sm mb-3 filefield_label'>
-    トップ画像の添付（ファイルを開く）
-    <%= f.file_field :top_image, accept: 'image/jpeg,image/gif,image/png', style: "display:none;" %>
-  </label>
+  <div class='form-group'>
+    <%= f.label :top_image, class: 'label-top_image' %>
+    <%= f.file_field :top_image, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
 
-    <label class='btn btn-outline btn-sm mb-3 filefield_label'>
-    プロフィール画像の添付（ファイルを開く）
-    <%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png', style: "display:none;" %>
-  </label>
+  <div class='form-group'>
+    <%= f.label :avatar, class: 'label-avatar' %>
+    <%= f.file_field :avatar, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
 
   <div class="form-group">
     <%= f.label :email %>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit t('.update'), class: 'btn btn-outline' %>
+    <%= f.submit t('.update'), class: 'btn btn-primary' %>
   </div>
 <% end %>
 

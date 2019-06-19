@@ -1,10 +1,13 @@
-<h1>記事一覧</h1>
-<% @blogs.each do |blog| %>
-  <p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
-  <p>記事の内容：<%= blog.body %></p>
-  <%= link_to "編集", edit_blog_path(blog), class: "btn btn-outline-success" %>
-  <%= link_to "削除", blog_path(blog), 
-                   method: :delete, 
-                   class: "btn btn-outline-success", 
-                   data: { confirm: "#{blog.title} を削除します。よろしいですか？"} %>
-<% end %>
+<%= render "shared/default_top_image" %>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8'>
+      <h1>記事一覧</h1>
+      <%= render @blogs %>
+    </div>
+    <div class='col-md-4'>
+
+    </div>
+  </div>
+</div>

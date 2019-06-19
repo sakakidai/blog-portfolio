@@ -14,12 +14,7 @@
     <% if controller_action_selects %>
 
       <div class='cover cover-selects'>
-
-        <% if user_signed_in? && current_user.top_image.present? %>
-          <%= image_tag current_user.top_image.url, class: "background" %>
-        <% else %>
-          <div class='background background-photo'></div>
-        <% end %>
+        <%= render 'layouts/background_image' %>
         <%= render 'layouts/header' %>
         <div class='container'>
           <%= render "layouts/flash" %>
@@ -34,10 +29,10 @@
 
     <% else %>
       
-      <div class='cover'>
+      <div class='cover cover-none-select'>
         <%= render 'layouts/header' %>
-          <%= render "layouts/flash" %>
-          <%= yield %>
+        <%= render "layouts/flash" %>
+        <%= yield %>
         <%= render 'layouts/footer' %>
       </div>
 

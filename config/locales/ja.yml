@@ -5,10 +5,9 @@ ja:
         id: ID
         title: タイトル
         body: 記事の内容
-        photo: 写真
         created_at: 登録日時
         updated_at: 更新日時
       image:
         id: ID
-        picture: 写真
+        picture: ブログの写真
         title: 写真タイトル
