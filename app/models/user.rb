@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   mount_uploader :avatar, PictureUploader
   mount_uploader :top_image, PictureUploader
+  
+  scope :recent, -> { order(updated_at: :desc) }
 
   private
 

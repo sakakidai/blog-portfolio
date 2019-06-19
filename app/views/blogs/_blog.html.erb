@@ -1,13 +1,20 @@
 <p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
-<p><%= simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div") %></p>
+<p><%= auto_link(simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div"),
+                              html: {target: '_blank'}) %></p>
 <% if blog.images.present? %>
   <% blog.images.each do |image| %>
     <%= image.title %><br>
     <%= image_tag image.picture.url, class: "blog-image" if image.picture.present? %><br>
   <% end %>
 <% end %>
-<span><%= link_to "編集", edit_blog_path(blog), class: "btn btn-primary" %></span>
-<span><%= link_to "削除", blog_path(blog), 
-                method: :delete, 
-                class: "btn btn-primary", 
-                data: { confirm: "#{blog.title} を削除します。よろしいですか？"} %></span>
+<span>
+  <%= link_to edit_blog_path(blog), class: "btn btn-primary" do %>
+    編集<%= icon("fas", "pencil-alt", class: 'ml-3')%>
+  <% end %>
+</span>
+<span>
+  <%= link_to blog_path(blog), method: :delete, class: "btn btn-primary", 
+                               data: { confirm: "#{blog.title} を削除します。よろしいですか？"} do %>
+    削除<%= icon("fas", "trash-alt", class: 'ml-3')%>
+  <% end %>
+</span>

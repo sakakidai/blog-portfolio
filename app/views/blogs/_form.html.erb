@@ -19,9 +19,15 @@
         <%= f.label :picture, class: 'label-picture' %>
         <%= f.file_field :picture, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
       </div>
-      <%= f.link_to_remove "写真リンクの削除", class: "btn btn-primary btn-sm mb-3" %>
+      <%= f.link_to_remove class: "btn btn-primary btn-sm mb-3" do %>
+        写真リンクの削除<%= icon("fas", "trash-alt", class: 'fa-lg fa-fw ml-3')%>
+      <% end %>
     <% end %>
-    <span><%= f.link_to_add "画像の追加", :images, class: "btn btn-primary btn-sm mb-3" %></span>
+    <span>
+      <%= f.link_to_add :images, class: "btn btn-primary btn-sm mb-3" do %>
+        画像の追加<%= icon("fas", "angle-down", class: 'fa-lg fa-fw ml-3')%>
+      <% end %>
+    </span>
   <div class='form-group'>
     <%= f.submit nil, class: 'btn btn-primary'%>
   </div>

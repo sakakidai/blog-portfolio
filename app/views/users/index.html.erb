@@ -1,7 +1,7 @@
 <%= render "shared/default_top_image" %>
 
 <div class='container'>
-  <div class='row none-image-top'>
+  <div class='row'>
     <% @users.each do |user| %>
       <div class='col-lg-3 col-6'>
       <%= image_tag user.avatar.thumb.url, class: 'avatar-image' if user.avatar.present? %><br>
@@ -10,4 +10,5 @@
       </div>
     <% end %>
   </div>
+  <%= paginate @users %>
 </div>

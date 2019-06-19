@@ -4,6 +4,7 @@
   <div class="row">
     <div class="col-md-8">
       <%= render @blogs %>
+      <%= paginate @blogs %>
     </div>
     <div class="col-md-4 d-none d-md-block">
       <%= image_tag @avatar.thumb.url, class: 'avatar-image' if @avatar.present? %>

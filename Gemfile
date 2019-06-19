@@ -24,6 +24,9 @@ gem 'devise-i18n-views'
 gem 'carrierwave'
 gem 'mini_magick'
 gem "nested_form"
+gem 'kaminari'
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'rails_autolink'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

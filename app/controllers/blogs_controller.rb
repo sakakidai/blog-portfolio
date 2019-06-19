@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   
   def index
-    @blogs = Blog.all
+    @blogs = Blog.recent.page(params[:page]).per(10)
   end
 
   def show
@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
     @user = @blog.user
     @images = @blog.images
   end
-
+  
   def new
     @blog = Blog.new
     @image = @blog.images.build
