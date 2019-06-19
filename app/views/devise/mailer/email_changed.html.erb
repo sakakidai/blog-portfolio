@@ -1,4 +1,4 @@
-<p>こんにちは！ <%= @name %>さん</p>
+<p>こんにちは！ <%= @user.email %>さん</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
   <p>あなたのEメールアドレスが変更されました。</p>

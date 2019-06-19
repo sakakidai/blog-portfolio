@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 // 背景画像
 .cover {
@@ -36,6 +38,13 @@
   font-family: 'Playfair Display', serif;
   letter-spacing: 15px;
   color: black;
+}
+
+.alert {
+  width: 100%; 
+  margin-top: 55px;
+  position: absolute;
+
 }
 
 
@@ -114,6 +123,11 @@
 
 .filefield_label {
   margin-bottom: 0px;
+}
+
+// ページネーション
+.pagination {
+  justify-content: center;
 }
 
 
