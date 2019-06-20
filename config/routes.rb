@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   root to: "home#index"
+  resources :categories
   resources :blogs do
     resource :favarites, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]

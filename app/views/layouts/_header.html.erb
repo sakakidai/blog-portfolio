@@ -17,9 +17,11 @@
           カテゴリー
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to "カテゴリー新規作成", new_category_path, class: 'dropdown-item' %>
+          <%= link_to "カテゴリー一覧", categories_path, class: 'dropdown-item' %>
+          <% @categories.each do |category| %>
+            <%= link_to category.name, category_path(category), class: 'dropdown-item' %>
+          <% end %>
         </div>
       </li>
       <% if user_signed_in? %>
