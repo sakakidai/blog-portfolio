@@ -7,9 +7,11 @@ class BlogsController < ApplicationController
     @post_ranking = User.find(Blog.post_ranking)
     @favarite_ranking = Blog.find(Favarite.iine_ranking)
     @image = Image.where(blog_id: Image.picture_having)
+    @comment = Comment.new
   end
   def show
-    
+    @comment = Comment.new
+    @comments = @blog.comments
   end
   
   def new

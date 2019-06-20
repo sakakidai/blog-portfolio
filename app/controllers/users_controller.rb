@@ -8,5 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @blogs = @user.blogs.recent.page(params[:page]).per(10)
+    @comment = Comment.new
   end
 end

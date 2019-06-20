@@ -3,5 +3,3 @@
 <% else %>
   <%= image_tag "avatar-image.jpg", class: "avatar-image" %>
 <% end %>
-<%= link_to user.name, user_path(user) %><br>
-<p class="mb-0">作成した記事：<%= user.blogs.count %>個</p>
