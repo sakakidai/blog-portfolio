@@ -22,14 +22,30 @@
   </div>
 <% end %>
 
-<span>
-  <%= link_to edit_blog_path(blog), class: "btn btn-primary" do %>
-    編集<%= icon("fas", "pencil-alt", class: 'ml-3')%>
+<% if blog.comments.present? %>
+  <h4>コメント</h4>
+  <div class='row'>
+  <% blog.comments.each do |comment| %>
+    <div class='col-2'>
+      <%= render 'users/avatar_img', user: comment.user %>
+    </div>
+    <div class='col-10'>
+      <%= comment.content %>
+      <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
+    </div>
   <% end %>
-</span>
-<span>
-  <%= link_to blog_path(blog), method: :delete, class: "btn btn-primary", 
-                               data: { confirm: "#{blog.title} を削除します。よろしいですか？"} do %>
-    削除<%= icon("fas", "trash-alt", class: 'ml-3')%>
+  </div>
+<% end %>
+
+<%if user_signed_in? %>
+  <% if !blog.commented_by?(current_user) %>
+    <%= form_for [blog, @comment] do |f| %>
+      <%= f.text_field :content %>
+      <br>
+      <%= f.submit "コメントする", class: "btn btn-primary" %>
+    <% end %>
   <% end %>
-</span>
+<% end %>
+
+<%= render partial: 'shared/edit_btn', locals: { path: edit_blog_path(blog) } %>
+<%= render partial: 'shared/delete_btn', locals: { path: blog_path(blog), confirm: blog.title } %>

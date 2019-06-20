@@ -6,6 +6,7 @@ class Blog < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :favarites, dependent: :destroy
   has_many :favarite_users, through: :favarites, source: :user
+  has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
@@ -14,6 +15,10 @@ class Blog < ApplicationRecord
 
   def favarited_by?(user)
     favarites.find_by(user_id: user.id).present?
+  end
+
+  def commented_by?(user)
+    comments.find_by(user_id: user.id).present?
   end
 
   def images?

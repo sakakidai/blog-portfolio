@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :favarites, dependent: :destroy
   has_many :favarite_blogs, through: :favarites, source: :blog
+  has_many :comments, dependent: :destroy
 
   scope :recent, -> { order(updated_at: :desc) }
 

@@ -1,0 +1,6 @@
+<span>
+  <%= link_to path, method: :delete, class: "btn btn-primary", 
+                               data: { confirm: "#{confirm} を削除します。よろしいですか？"} do %>
+    削除<%= icon("fas", "trash-alt", class: 'ml-3')%>
+  <% end %>
+</span>

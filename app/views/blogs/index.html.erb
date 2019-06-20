@@ -6,7 +6,7 @@
     <div class='row'>
       <% @post_ranking.each do |user| %>
         <div class='col-lg-3 col-6'>
-          <%= render 'users/avatar_img', user: user %>
+          <%= render 'users/avatar', user: user %>
         </div>
       <% end %>
     </div>
