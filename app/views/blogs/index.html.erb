@@ -31,9 +31,18 @@
       <%= paginate @blogs %>
     </div>
     <div class='col-md-4'>
+      <h2>カテゴリー一覧</h2>
       <div class='row'>
+        <% @categories.each do |category| %>
+          <div class='col-3'>
+            <%= link_to category.name, category_path(category), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+
       <h2>写真のある投稿</h2>
-        <% @image.each do |image| %>
+      <div class='row'>
+        <% @images.each do |image| %>
           <div class='col-6'>
             <%= image_tag image.blog_img, class: "avatar-image" if image.blog_img? %>
           </div>

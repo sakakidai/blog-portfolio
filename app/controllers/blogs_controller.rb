@@ -4,14 +4,14 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.recent.page(params[:page]).per(10)
+    @images = Image.where(blog_id: Image.picture_having)
+    @categories = Category.all
     @post_ranking = User.find(Blog.post_ranking)
     @favarite_ranking = Blog.find(Favarite.iine_ranking)
-    @image = Image.where(blog_id: Image.picture_having)
     @comment = Comment.new
   end
   def show
     @comment = Comment.new
-    @comments = @blog.comments
   end
   
   def new
@@ -51,7 +51,7 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :body, images_attributes: [:id, :title, :picture, :_destroy])
+    params.require(:blog).permit(:title, :body, category_ids: [], images_attributes: [:id, :title, :picture, :_destroy])
   end
 
   def set_blog

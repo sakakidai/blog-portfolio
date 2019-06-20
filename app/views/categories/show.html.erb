@@ -1,0 +1,18 @@
+<%= render "shared/default_top_image" %>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-8'>
+      <h1>
+        <%= link_to @category.name, category_path(@category) %>
+        <%= render partial: 'shared/edit_btn', locals: { path: edit_category_path(@category) } %>
+        <%= render partial: 'shared/delete_btn', locals: { path: category_path(@category), 
+                                                confirm: @category.name } %>
+      </h1>
+      <%= render @blogs %>
+      <%= paginate @blogs %>
+    </div>
+    <div class='col-4'>
+    </div>
+  </div>
+</div>

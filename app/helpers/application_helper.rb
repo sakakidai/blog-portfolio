@@ -20,8 +20,12 @@ module ApplicationHelper
     (controller.action_name == "create" || controller.action_name == "update") && controller.controller_name == "registrations"
   end
 
+  def controller_categories_renders
+    (controller.action_name == "create" || controller.action_name == "update") && controller.controller_name == "categories"
+  end
+
   def controller_action_selects
-    action_new || action_edit || controller_home || controller_blogs_renders || controller_registrations_renders
+    action_new || action_edit || controller_home || controller_blogs_renders || controller_registrations_renders || controller_categories_renders
   end
 
 

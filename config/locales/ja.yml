@@ -11,6 +11,10 @@ ja:
         id: ID
         picture: ブログの写真
         title: 写真タイトル
+      category:
+        name: カテゴリー
+        created_at: 登録日時
+        updated_at: 更新日時
   views:
     pagination:
       first: 最初
