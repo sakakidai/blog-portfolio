@@ -6,10 +6,12 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {minimum: 2, maximum: 20}
   validate :avatar_size
   validate :top_image_size
-  has_many :blogs, dependent: :destroy
   mount_uploader :avatar, PictureUploader
   mount_uploader :top_image, PictureUploader
-  
+  has_many :blogs, dependent: :destroy
+  has_many :favarites, dependent: :destroy
+  has_many :favarite_blogs, through: :favarites, source: :blog
+
   scope :recent, -> { order(updated_at: :desc) }
 
   private

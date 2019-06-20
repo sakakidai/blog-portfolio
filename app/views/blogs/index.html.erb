@@ -1,6 +1,29 @@
 <%= render "shared/default_top_image" %>
 
 <div class='container'>
+  <% if @post_ranking %>
+    <h2>投稿の多いユーザー</h2>
+    <div class='row'>
+      <% @post_ranking.each do |user| %>
+        <div class='col-lg-3 col-6'>
+          <%= render 'users/avatar_img', user: user %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @favarite_ranking %>
+    <h2>いいねが多い投稿</h2>
+    <div class='row'>
+      <% @favarite_ranking.each do |blog| %>
+        <div class='col-lg-3 col-6'>
+          <p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
+          <%= render "favarites/favarite", blog: blog %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class='row'>
     <div class='col-md-8'>
       <h1>記事一覧</h1>
@@ -8,7 +31,19 @@
       <%= paginate @blogs %>
     </div>
     <div class='col-md-4'>
-
+      <div class='row'>
+        <% @image.each do |image| %>
+          <div class='col-6'>
+            <%= image_tag image.blog_img, class: "avatar-image" if image.blog_img? %>
+          </div>
+          <div class='col-6'>
+            <%= image.blog.title %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+
+  

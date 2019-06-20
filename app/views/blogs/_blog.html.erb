@@ -1,12 +1,27 @@
 <p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
+
+<%= render "favarites/favarite", blog: blog %>
+
 <p><%= auto_link(simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div"),
                               html: {target: '_blank'}) %></p>
-<% if blog.images.present? %>
+<% if blog.images? %>
   <% blog.images.each do |image| %>
     <%= image.title %><br>
-    <%= image_tag image.picture.url, class: "blog-image" if image.picture.present? %><br>
+    <%= image_tag image.blog_img, class: "blog-image" if image.blog_img? %><br>
   <% end %>
 <% end %>
+
+<% if blog.favarite_users? %>
+  <p>この記事にいいね！！された方</p>
+  <div class='row'>
+    <% blog.favarite_users.each do |user| %>
+      <div class='col-2'>
+        <%= image_tag user.avatar_img, class: 'avatar-image' if user.avatar_img? %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <span>
   <%= link_to edit_blog_path(blog), class: "btn btn-primary" do %>
     編集<%= icon("fas", "pencil-alt", class: 'ml-3')%>

@@ -4,6 +4,8 @@ class Image < ApplicationRecord
   belongs_to :blog
   mount_uploader :picture, PictureUploader
 
+  scope :picture_having, -> { group(:blog_id).limit(5).pluck(:blog_id) }
+
   private
 
   def picture_size

@@ -40,11 +40,11 @@
   color: black;
 }
 
+// フラッシュアラート
 .alert-dismissible {
   width: 100%;
   margin-top: 55px;
   position: fixed;
-
 }
 
 
@@ -116,13 +116,13 @@
   width: 100%;
 }
 
-// フォーム
-// .user_delete_button {
-//   float: right;
-// }
-
 .filefield_label {
   margin-bottom: 0px;
+}
+
+// アイコン
+.fa-heart {
+  color: red;
 }
 
 // ページネーション
