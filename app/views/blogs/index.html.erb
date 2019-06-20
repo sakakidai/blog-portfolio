@@ -32,6 +32,7 @@
     </div>
     <div class='col-md-4'>
       <div class='row'>
+      <h2>写真のある投稿</h2>
         <% @image.each do |image| %>
           <div class='col-6'>
             <%= image_tag image.blog_img, class: "avatar-image" if image.blog_img? %>
