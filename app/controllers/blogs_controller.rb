@@ -4,12 +4,12 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.recent.page(params[:page]).per(10)
+    @post_ranking = User.find(Blog.post_ranking)
+    @favarite_ranking = Blog.find(Favarite.iine_ranking)
+    @image = Image.where(blog_id: Image.picture_having)
   end
-
   def show
-    @blog = Blog.find(params[:id])
-    @user = @blog.user
-    @images = @blog.images
+    
   end
   
   def new

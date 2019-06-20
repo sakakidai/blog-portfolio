@@ -1,4 +1,4 @@
-<% if user.top_image.present? %>
+<% if user.top_image? %>
   <div class='jumbotron jumbotron-fluid jumbotron-top' style="background-image: url(<%= user.top_image.large.url %>);">
     <div class="container jumbotron-container">
       <h1><%= user.name %></h1>
