@@ -13,6 +13,14 @@ class ApplicationRecord < ActiveRecord::Base
     picture.url
   end
 
+  def first_img
+    images.first.picture.thumb.url
+  end
+
+  def first_img?
+    images.present?
+  end
+
   def blog_img?
     picture.present?
   end

@@ -73,8 +73,8 @@ class Favarite extends React.Component {
 
     return (
       <React.Fragment>
-        <button 
-          className={ className }
+        <span 
+          // className={ className }
           onClick={ isFavariting ? this.unfavarite : this.favarite } 
           disabled={ this.state.loading } 
         >
@@ -82,7 +82,7 @@ class Favarite extends React.Component {
             <i className="fas fa-heart"></i> : 
             <i className="far fa-heart"></i> 
           } : { isCount } いいね！！
-        </button>
+        </span>
       </React.Fragment>
     );
   }

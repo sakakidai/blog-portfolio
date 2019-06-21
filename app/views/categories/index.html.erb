@@ -1,9 +1,9 @@
 <%= render "shared/default_top_image" %>
 <div class='container'>
+  <h1>カテゴリー一覧</h1>
   <div class='row'>
     <% @categories.each do |category| %>
-      <div class='col-8' align='center'>
-        <h1>カテゴリー一覧</h1>
+      <div class='col-8'>
         <h1>
           <%= link_to category.name, category_path(category) %>
           <%= render partial: 'shared/edit_btn', locals: { path: edit_category_path(category) } %>
