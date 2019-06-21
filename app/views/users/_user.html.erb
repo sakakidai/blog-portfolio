@@ -9,14 +9,14 @@
     <div class='col-8'>
       <div class='lie-container'>
         <small><%= link_to user.blogs.first.title, blog_path(user.blogs.first) %></small><br>
-        <small><%= user.blogs.first.created_at %></small>
+        <small><%= user.blogs.first.created_at.to_s(:datetime_jp) %></small>
       </div>
     </div>
   <% else %>
     <div class='col-12'>
       <div class='lie-container'>
         </small><%= link_to user.blogs.first.title, blog_path(user.blogs.first) %></small><br>
-        <small><%= user.blogs.first.created_at %></small>
+        <small><%= user.blogs.first.created_at.to_s(:datetime_jp) %></small>
       </div>
     </div>
   <% end %>
