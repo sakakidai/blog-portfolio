@@ -3,8 +3,8 @@ class BlogsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   
   def index
-    @blogs = Blog.recent.page(params[:page]).per(10)
-    @images = Image.where(blog_id: Image.picture_having)
+    @blogs = Blog.recent.page(params[:page]).per(5)
+    @picture_having_blogs = Blog.find(Image.picture_having)
     @categories = Category.all
     @post_ranking = User.find(Blog.post_ranking)
     @favarite_ranking = Blog.find(Favarite.iine_ranking)

@@ -1,51 +1,77 @@
-<p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
-
-<%= render "favarites/favarite", blog: blog %>
-
-<p><%= auto_link(simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div"),
-                              html: {target: '_blank'}) %></p>
-<% if blog.images? %>
-  <% blog.images.each do |image| %>
-    <%= image.title %><br>
-    <%= image_tag image.blog_img, class: "blog-image" if image.blog_img? %><br>
+<div class='blog-container'>
+  <h2>
+    <%= link_to blog.title, blog_path(blog) %>
+    <span class='buttons'>
+      <%= render partial: 'shared/edit_btn', locals: { path: edit_blog_path(blog) } %>
+      <%= render partial: 'shared/delete_btn', locals: { path: blog_path(blog), confirm: blog.title } %>
+    </span>
+  </h2>
+  <small><%= blog.created_at %></small> / 
+  <small><%= link_to blog.user.name, user_path(blog.user) %></small><br>
+  <%if blog.categories.present? %>
+    <% blog.categories.each do |category| %>
+      <small>[<%=link_to category.name, category_path(category) %>]</small>
+    <% end %>
   <% end %>
-<% end %>
+  <%= render "favarites/favarite", blog: blog %>
+  <span>
+    <%= icon("far", "comment") %> :
+    <%= blog.comments.count %> コメント
+  </span>
 
-<% if blog.favarite_users? %>
-  <p>この記事にいいね！！された方</p>
-  <div class='row'>
-    <% blog.favarite_users.each do |user| %>
+
+  <p><%= auto_link(simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div"),
+                              html: {target: '_blank'}) %></p>
+  <% if blog.images? %>
+    <% blog.images.each do |image| %>
+      <h5 class='mt-4'><%= image.title %></h5>
+      <%= image_tag image.blog_img, class: "blog-image" if image.blog_img? %><br>
+    <% end %>
+  <% end %>
+
+  <% if blog.favarite_users? %>
+    <h5 class='mt-5'>この記事にいいね！！された方</h5>
+    <div class='row'>
+      <% blog.favarite_users.each do |user| %>
+        <div class='col-2'>
+          <%= render 'users/avatar_img', user: user %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if blog.comments.present? %>
+    <h5 class='mt-5'>コメント</h5>
+    <div class='row'>
+    <% blog.comments.each do |comment| %>
       <div class='col-2'>
-        <%= image_tag user.avatar_img, class: 'avatar-image' if user.avatar_img? %>
+        <%= render 'users/avatar_img', user: comment.user %>
+      </div>
+      <div class='col-10'>
+        <div class='lie-container'>
+          <strong><%= link_to comment.user.name, user_path(comment.user) %> :</strong>
+          <%= comment.content %>
+          <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
+        </div>
       </div>
     <% end %>
-  </div>
-<% end %>
-
-<% if blog.comments.present? %>
-  <h4>コメント</h4>
-  <div class='row'>
-  <% blog.comments.each do |comment| %>
-    <div class='col-2'>
-      <%= render 'users/avatar_img', user: comment.user %>
-    </div>
-    <div class='col-10'>
-      <%= comment.content %>
-      <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
     </div>
   <% end %>
-  </div>
-<% end %>
 
-<%if user_signed_in? %>
-  <% if !blog.commented_by?(current_user) %>
-    <%= form_for [blog, @comment] do |f| %>
-      <%= f.text_field :content %>
-      <br>
-      <%= f.submit "コメントする", class: "btn btn-primary" %>
+  <%if user_signed_in? %>
+    <% if !blog.commented_by?(current_user) %>
+      <%= form_for [blog, @comment] do |f| %>
+      
+        <div class='form-group mt-3'>
+          <%= f.text_area :content, class: 'form-control', placeholder: 'コメント', rows: 2 %>
+        </div>
+        <div class='form-group mb-0'>
+          <%= button_tag type: "submt", class: "btn btn-primary" do %>
+            コメント<%= icon("far", "comment", class: "ml-3") %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
 
-<%= render partial: 'shared/edit_btn', locals: { path: edit_blog_path(blog) } %>
-<%= render partial: 'shared/delete_btn', locals: { path: blog_path(blog), confirm: blog.title } %>

@@ -4,8 +4,7 @@
   <div class='row'>
     <% @users.each do |user| %>
       <div class='col-lg-3 col-6'>
-      <%= render 'avatar', user: user %>
-      <%= user.email %>
+        <%= render 'user', user: user %>
       </div>
     <% end %>
   </div>

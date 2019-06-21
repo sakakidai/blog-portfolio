@@ -2,53 +2,81 @@
 
 <div class='container'>
   <% if @post_ranking %>
-    <h2>投稿の多いユーザー</h2>
-    <div class='row'>
-      <% @post_ranking.each do |user| %>
-        <div class='col-lg-3 col-6'>
-          <%= render 'users/avatar', user: user %>
-        </div>
-      <% end %>
+    <div class='inner-container'>
+      <h2 class='mb-3'>投稿の多いユーザー</h2>
+      <div class='row'>
+        <% @post_ranking.each do |user| %>
+          <div class='col-lg-3 col-6'>
+            <%= render 'users/user', user: user %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
   <% if @favarite_ranking %>
-    <h2>いいねが多い投稿</h2>
-    <div class='row'>
-      <% @favarite_ranking.each do |blog| %>
-        <div class='col-lg-3 col-6'>
-          <p>タイトル：<%= link_to blog.title, blog_path(blog) %></p>
-          <%= render "favarites/favarite", blog: blog %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class='row'>
-    <div class='col-md-8'>
-      <h1>記事一覧</h1>
-      <%= render @blogs %>
-      <%= paginate @blogs %>
-    </div>
-    <div class='col-md-4'>
-      <h2>カテゴリー一覧</h2>
+    <div class='inner-container'>
+      <h2 class='mb-3'>いいねが多い投稿</h2>
       <div class='row'>
-        <% @categories.each do |category| %>
-          <div class='col-3'>
-            <%= link_to category.name, category_path(category), class: 'btn btn-primary' %>
+        <% @favarite_ranking.each do |blog| %>
+          <div class='col-lg-3 col-6'>
+            <h5><%= link_to blog.title, blog_path(blog) %></h5>
+            <small><%= blog.created_at %></small> / 
+            <small><%= link_to blog.user.name, user_path(blog.user) %></small><br>
+            <%if blog.categories.present? %>
+              <% blog.categories.each do |category| %>
+                <small>[<%=link_to category.name, category_path(category) %>]</small>
+              <% end %>
+            <% end %>
+            <%= render "favarites/favarite", blog: blog %>
+            <span>
+              <%= icon("far", "comment") %> :
+              <%= blog.comments.count %> コメント
+            </span>
+            <p class='mb-0 mt-2'>内容</p>
+            <%= truncate(blog.body, length: 50) %>
           </div>
         <% end %>
       </div>
+    </div>
+  <% end %>
 
-      <h2>写真のある投稿</h2>
-      <div class='row'>
-        <% @images.each do |image| %>
-          <div class='col-6'>
-            <%= image_tag image.blog_img, class: "avatar-image" if image.blog_img? %>
-          </div>
-          <div class='col-6'>
-            <%= image.blog.title %>
-          </div>
+  <div class='inner-container'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <h2>記事一覧</h2>
+        <div>
+          <%= render @blogs %>
+        </div>
+        <%= paginate @blogs %>
+      </div>
+      
+      <div class='col-md-4'>
+        <h2>カテゴリー一覧</h2>
+        <% @categories.each do |category| %>
+          
+            <%= link_to category_path(category), class: 'btn btn-primary btn-sm mr-3 mt-3' do %>
+            <%= category.name %> 
+            (<%= category.blogs.count %>)
+            <% end %>
+        
+        <% end %>
+
+        <h2 class='mt-5'>写真のある投稿</h2>
+        <% @picture_having_blogs.each do |blog| %>
+        <div class='row mt-3'>
+            <div class='col-4'>
+              <%= link_to blog_path(blog) do %>
+                <%= image_tag blog.first_img, class: "avatar-image" if blog.first_img? %>
+              <% end %>
+            </div>
+            <div class='col-8'>
+              <div class='lie-container'>
+                <small><%= link_to blog.title, blog_path(blog) %></small><br>
+                <small><%= blog.created_at %></small>
+              </div>
+            </div>
+        </div>
         <% end %>
       </div>
     </div>
