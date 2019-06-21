@@ -61,7 +61,7 @@
   <%if user_signed_in? %>
     <% if !blog.commented_by?(current_user) %>
       <%= form_for [blog, @comment] do |f| %>
-      
+        <%= render 'shared/error', object: @comment %>
         <div class='form-group mt-3'>
           <%= f.text_area :content, class: 'form-control', placeholder: 'コメント', rows: 2 %>
         </div>

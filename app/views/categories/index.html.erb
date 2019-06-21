@@ -1,18 +1,29 @@
 <%= render "shared/default_top_image" %>
 <div class='container'>
   <h1>カテゴリー一覧</h1>
-  <div class='row'>
-    <% @categories.each do |category| %>
-      <div class='col-8'>
-        <h1>
-          <%= link_to category.name, category_path(category) %>
-          <%= render partial: 'shared/edit_btn', locals: { path: edit_category_path(category) } %>
-          <%= render partial: 'shared/delete_btn', locals: { path: category_path(category), 
-                                                  confirm: category.name } %>
-        </h1>
-      </div>
-    <% end %>
-    <div class='col-4'>
-    </div>
+  <div class='row' align='center'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>カテゴリー名</th>
+          <th>作成日</th>
+          <th>記事の数</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+            <tr>
+              <td><%= link_to category.name, category_path(category) %></td>
+              <td><%= category.created_at.to_s(:datetime_jp) %></td>
+              <td><%= category.blogs.count %> 個</td>
+              <td><%= render partial: 'shared/edit_btn', locals: { path: edit_category_path(category) } %></td>
+              <td><%= render partial: 'shared/delete_btn', locals: { path: category_path(category), 
+                                                  confirm: category.name } %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
