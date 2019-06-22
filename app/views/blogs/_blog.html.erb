@@ -6,20 +6,22 @@
       <%= render partial: 'shared/delete_btn', locals: { path: blog_path(blog), confirm: blog.title } %>
     </span>
   </h2>
-  <small><%= blog.created_at %></small> / 
-  <small><%= link_to blog.user.name, user_path(blog.user) %></small><br>
-  <%if blog.categories.present? %>
-    <% blog.categories.each do |category| %>
-      <small>[<%=link_to category.name, category_path(category) %>]</small>
+  <div class='blog-sub-content'>
+    <small><%= blog.created_at.to_s(:datetime_jp) %></small> / 
+    <%= link_to blog.user.name, user_path(blog.user) %><br>
+    <%if blog.categories.present? %>
+      <% blog.categories.each do |category| %>
+        <small>[<%=link_to category.name, category_path(category) %>]</small>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= render "favarites/favarite", blog: blog %>
-  <span>
-    <%= icon("far", "comment") %> :
-    <%= blog.comments.count %> コメント
-  </span>
+    <%= render "favarites/favarite", blog: blog %>
+    <span>
+      <%= icon("far", "comment") %> :
+      <%= blog.comments.count %> コメント
+    </span>
+  </div>
 
-
+  <br>
   <p><%= auto_link(simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div"),
                               html: {target: '_blank'}) %></p>
   <% if blog.images? %>
@@ -32,7 +34,7 @@
   <% if blog.favarite_users? %>
     <h5 class='mt-5'>この記事にいいね！！された方</h5>
     <div class='row'>
-      <% blog.favarite_users.each do |user| %>
+      <% blog.favarite_users.recent_5.each do |user| %>
         <div class='col-2'>
           <%= render 'users/avatar_img', user: user %>
         </div>
@@ -42,20 +44,20 @@
 
   <% if blog.comments.present? %>
     <h5 class='mt-5'>コメント</h5>
-    <div class='row'>
-    <% blog.comments.each do |comment| %>
-      <div class='col-2'>
-        <%= render 'users/avatar_img', user: comment.user %>
-      </div>
-      <div class='col-10'>
-        <div class='lie-container'>
-          <strong><%= link_to comment.user.name, user_path(comment.user) %> :</strong>
-          <%= comment.content %>
-          <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
+    <% blog.comments.recent_5.each do |comment| %>
+      <div class='row mb-2'>
+        <div class='col-2'>
+          <%= render 'users/avatar_img', user: comment.user %>
+        </div>
+        <div class='col-10'>
+          <div class='lie-container'>
+            <strong><%= link_to comment.user.name, user_path(comment.user) %> :</strong>
+            <%= comment.content %>
+            <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
+          </div>
         </div>
       </div>
     <% end %>
-    </div>
   <% end %>
 
   <%if user_signed_in? %>

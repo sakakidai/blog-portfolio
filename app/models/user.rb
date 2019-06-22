@@ -13,8 +13,8 @@ class User < ApplicationRecord
   has_many :favarite_blogs, through: :favarites, source: :blog
   has_many :comments, dependent: :destroy
 
-  scope :recent, -> { order(updated_at: :desc) }
-
+  scope :recent_5, -> { limit(5).recent }
+  
   private
 
   def avatar_size

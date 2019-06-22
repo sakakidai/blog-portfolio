@@ -1,5 +1,13 @@
 <div class='jumbotron jumbotron-fluid jumbotron-top background-photo'>
   <div class='container jumbotron-container'>
+  <% if user_and_blog_show %>
+    <% if controller_users %>
+      <h1><%= @user.name %></h1>
+    <% else %>
+      <h1><%= @blog.user.name %></h1>
+    <% end %>
+  <% else %>
     <h1>Blog Portfolio</h1>
+  <% end %>
   </div>
 </div>

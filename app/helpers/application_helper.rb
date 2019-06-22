@@ -28,5 +28,17 @@ module ApplicationHelper
     action_new || action_edit || controller_home || controller_blogs_renders || controller_registrations_renders || controller_categories_renders
   end
 
+  def user_and_blog_show
+    (controller.controller_name == "users" || controller.controller_name == "blogs") && controller.action_name == "show"
+  end
+
+  def controller_users
+    controller.controller_name == "users"
+  end
+
+  def prefered_color
+    return current_user.color if (user_signed_in? && current_user.color.present?)
+    "#fff"
+  end
 
 end
