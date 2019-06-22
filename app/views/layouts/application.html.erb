@@ -9,9 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag    'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style type="text/css">
+    a {color:<%= prefered_color %>;}
+    body {color:<%= prefered_color %>;}
+    .btn-icon {color:<%= prefered_color %>;}
+    </style>
   </head>
 
-  <body style="color: <%= prefered_color %>;">
+  <body>
     <% if controller_action_selects %>
 
       <div class='cover cover-selects'>
