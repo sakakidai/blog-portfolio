@@ -29,6 +29,7 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem 'rails_autolink'
 gem 'webpacker', '~> 4.x'
 gem 'react-rails'
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

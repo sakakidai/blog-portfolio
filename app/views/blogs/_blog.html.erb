@@ -1,10 +1,13 @@
 <div class='blog-container'>
   <h2>
     <%= link_to blog.title, blog_path(blog) %>
-    <span class='buttons'>
-      <%= render partial: 'shared/edit_btn', locals: { path: edit_blog_path(blog) } %>
-      <%= render partial: 'shared/delete_btn', locals: { path: blog_path(blog), confirm: blog.title } %>
-    </span>
+
+    <% if user_signed_in? && current_user == blog.user %>
+      <span class='buttons'>
+        <%= render partial: 'shared/edit_btn', locals: { path: edit_blog_path(blog) } %>
+        <%= render partial: 'shared/delete_btn', locals: { path: blog_path(blog), confirm: blog.title } %>
+      </span>
+    <% end %>
   </h2>
   <div class='blog-sub-content'>
     <small><%= blog.created_at.to_s(:datetime_jp) %></small> / 
@@ -53,7 +56,9 @@
           <div class='lie-container'>
             <strong><%= link_to comment.user.name, user_path(comment.user) %> :</strong>
             <%= comment.content %>
-            <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
+            <% if user_signed_in? && current_user == comment.user %>
+              <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
+            <% end %>
           </div>
         </div>
       </div>

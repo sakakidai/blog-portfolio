@@ -21,14 +21,26 @@ ja:
       user:
         current_password: "現在のパスワード"
         name: 名前
+        color: 文字色
         avatar: プロフィール画像
         top_image: 背景画像
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+      admin_user:
+        email: "メールアドレス"
+        current_sign_in_at: 最新ログイン日時
+        sign_in_count: ログイン回数
+        created_at: 登録日時
+        updated_at: 更新日時
     models:
-      user: "ユーザ"
+      user: "ユーザー"
+      comment: "コメント"
+      admin_user: "管理者ユーザー"
+      blog: "ブログ"
+      category: "カテゴリー"
+      image: "ブログの画像"
   devise:
     confirmations:
       new:
