@@ -38,7 +38,7 @@ module ApplicationHelper
 
   def prefered_color
     return current_user.color if (user_signed_in? && current_user.color.present?)
-    "#fff"
+    "#525252"
   end
 
 end

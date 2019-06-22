@@ -71,12 +71,17 @@ class Favarite extends React.Component {
       'btn-outline': !isFavariting
     })
 
+    const icon_btn = {
+      cursor: "pointer"
+    }
+
     return (
       <React.Fragment>
         <span 
           // className={ className }
           onClick={ isFavariting ? this.unfavarite : this.favarite } 
           disabled={ this.state.loading } 
+          style={ icon_btn }
         >
           { isFavariting ? 
             <i className="fas fa-heart"></i> : 

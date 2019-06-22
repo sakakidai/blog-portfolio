@@ -2,6 +2,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+
 // 背景画像
 .cover {
   display: flex;
@@ -37,7 +38,6 @@
   font-size: 60px;
   font-family: 'Playfair Display', serif;
   letter-spacing: 15px;
-  color: black;
 }
 
 // フラッシュアラート
@@ -53,12 +53,17 @@
   .navbar {
     position: absolute;
     width: 100%;
+    
   }
 }
 
-.logo {
+.navbar {
   font-size: 1.2em;
   font-weight: bold;
+  z-index: 10;
+}
+
+.logo {
   margin: 0 10px;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -109,6 +114,10 @@
   border: 1px solid #2EFE2E;
 }
 
+.btn {
+  transition: 0.7s;
+}
+
 .buttons {
   float: right;
 }
@@ -120,7 +129,7 @@
   text-decoration: none;
   color: #FFF;
   background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-  transition: 0.7s;
+  
 }
 
 // アバターイメージ
@@ -159,7 +168,14 @@
   color: red;
 }
 
+.fa-comment {
+  color: blue;
+}
 
+// リンク
+a {
+  text-decoration: none!important;
+}
 
 // ブログ
 .blog-container {
@@ -218,29 +234,6 @@ footer {
   .form-control {
     opacity: 0.9;
   }
-
-  // // ボタン
-  // .btn {
-  //   color: black;
-  //   background: white;
-  // }
-
-  
-
-  // // ナビのボタン
-  // .nav-item {
-  //   .btn {
-  //     color: #2EFE2E;
-  //     background: none;
-  //     border: 1px solid #2EFE2E;
-  //   }
-  
-  //   .btn:hover {
-  //     background: #2EFE2E;
-  //     color: white;
-  //     border: none;
-  //   }
-  // }
 }
 
 
