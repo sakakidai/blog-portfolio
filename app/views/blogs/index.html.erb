@@ -55,8 +55,8 @@
         <h2>カテゴリー一覧</h2>
         <% @categories.each do |category| %>
           
-            <%= link_to category_path(category), class: 'btn btn-primary btn-sm mr-3 mt-3' do %>
-            <%= category.name %> 
+            <%= link_to category_path(category), class: 'btn btn-sm btn-category mr-3 mt-3' do %>
+            <%= category.name %>
             (<%= category.blogs.count %>)
             <% end %>
         

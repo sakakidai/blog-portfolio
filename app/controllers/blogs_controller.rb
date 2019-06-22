@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
     @favarite_ranking = Blog.find(Favarite.iine_ranking)
     @comment = Comment.new
   end
+  
   def show
     @comment = Comment.new
   end
