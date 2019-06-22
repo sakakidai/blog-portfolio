@@ -14,7 +14,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery_nested_form
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .

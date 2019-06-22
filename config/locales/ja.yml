@@ -5,12 +5,16 @@ ja:
         id: ID
         title: タイトル
         body: 記事の内容
+        user: ユーザー
         created_at: 登録日時
         updated_at: 更新日時
       image:
         id: ID
         picture: ブログの写真
         title: 写真タイトル
+        created_at: 登録日時
+        updated_at: 更新日時
+        blog: ブログ
       category:
         name: カテゴリー
         created_at: 登録日時

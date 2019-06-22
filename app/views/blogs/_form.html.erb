@@ -23,10 +23,12 @@
         <%= f.label :title, class: 'label-title' %>
         <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
       </div>
+
       <div class='form-group'>
-        <%= f.label :picture, class: 'label-picture' %>
+        <%= f.object.picture.present? ? image_tag((f.object.picture.url), class: "mb-3 avatar-image") : content_tag(:span, "イメージがありません") %>
         <%= f.file_field :picture, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
       </div>
+
       <%= f.link_to_remove class: "btn btn-primary btn-sm mb-3" do %>
         写真リンクの削除<%= icon("fas", "trash-alt", class: 'fa-lg fa-fw ml-3')%>
       <% end %>

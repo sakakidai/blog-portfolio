@@ -18,12 +18,12 @@
   </div>
   
   <div class='form-group'>
-    <%= f.label :top_image, class: 'label-top_image' %>
+    <%= f.object.top_image.present? ? image_tag((f.object.top_image.url), class: "mb-3 avatar-image") : content_tag(:span, "イメージがありません") %>
     <%= f.file_field :top_image, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
   </div>
 
   <div class='form-group'>
-    <%= f.label :avatar, class: 'label-avatar' %>
+    <%= f.object.avatar.present? ? image_tag((f.object.avatar.url), class: "mb-3 avatar-image") : content_tag(:span, "イメージがありません") %>
     <%= f.file_field :avatar, class: 'form-control', accept: 'image/jpeg,image/gif,image/png' %>
   </div>
 
