@@ -1,4 +1,4 @@
-#Blog Portfolio
+# Blog Portfolio
 
 ブログ機能のポートフォリオサイトです。
 ログインすることなく、ブログの一覧、詳細などを閲覧することが出来ます。
@@ -9,7 +9,7 @@ https://sakaki-blog-portfolio.herokuapp.com
 
 テストユーザー
 
-###実行環境
+### 実行環境
 - Ruby version :ruby 2.6.2
 - framework :Rails 5.2.3
 - Database :PostgreSQL :11.3
@@ -17,7 +17,7 @@ https://sakaki-blog-portfolio.herokuapp.com
 - Deployment :heroku
 - Installing :webpacker, :react, :react-fontawesome, :react-color, :classnames
 
-##機能一覧
+## 機能一覧
 - プロフィール / 作成・編集・削除
 - ブログ / 作成・編集・削除
 - ユーザー認証（devise）・メール認証（sendgrid）
