@@ -27,6 +27,7 @@ ja:
         favarite_blogs: いいねしたブログ
         email: "メールアドレス"
         password: "パスワード"
+        admin: "管理者ユーザー"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
       admin_user:
