@@ -114,10 +114,6 @@
   border: 1px solid #2EFE2E;
 }
 
-.btn {
-  // transition: 0.7s;
-}
-
 .buttons {
   float: right;
 }
@@ -129,7 +125,7 @@
   text-decoration: none;
   color: #FFF;
   background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
-  
+  transition: 0.8s;
 }
 
 // アバターイメージ
@@ -146,6 +142,36 @@
   border: 1px solid #2EFE2E;
   background: #2EFE2E;
 }
+
+.triangle {
+  background: #fafafa;
+  width: 250px;
+  height: 250px;
+  border: #eee 1px solid;
+  margin: 0 auto;
+  position: relative;
+}
+/* ラベル部分 左上に表示 */
+.triangle::before {
+  content: "";
+  top: 0;
+  left: 0;
+  border-bottom: 3.5em solid transparent;
+  border-left: 3.5em solid #FFC107; /* ラベルの色はここで変更 */
+  position: absolute;
+  z-index: 100;
+}
+
+.triangle-font {
+  display: block;
+  top: 5px;
+  left: 12px;
+  color: #fff; /* 文字色はここで変更 */
+  font-weight: bold;
+  position: absolute;
+  z-index: 101;
+}
+  
 
 // ブログイメージ
 .blog-image {
