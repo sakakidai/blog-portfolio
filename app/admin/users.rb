@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :color, :avatar, :top_image, :email, :password, :password_confirmation, :admin
+  permit_params :name, :color, :avatar, :top_image, :email, :password, :admin
 
   index do
     selectable_column
@@ -44,10 +44,8 @@ ActiveAdmin.register User do
       f.input :admin do
         check_box_tag :admin
       end
-      f.input :password
-      f.input :password_confirmation
-      f.input :avatar
       f.input :top_image
+      f.input :avatar
     end
     f.actions
   end

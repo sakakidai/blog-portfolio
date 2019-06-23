@@ -3,11 +3,15 @@
 ブログ機能のポートフォリオサイトです。
 ログインすることなく、ブログの一覧、詳細などを閲覧することが出来ます。
 ブログの作成、編集、削除などの一部の機能は名前、メール、パスワードを登録することで使用出来ます。
+テストユーザーを用意しました。下記のemailとpasswordでログイン出来ます。
 
 URL
 https://sakaki-blog-portfolio.herokuapp.com
 
 テストユーザー
+email: sample@example.com
+password: password
+
 
 ### 実行環境
 - Ruby version :ruby 2.6.2

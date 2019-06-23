@@ -22,6 +22,12 @@ ja:
         blogs: ブログ
         created_at: 登録日時
         updated_at: 更新日時
+      comment:
+        content: 内容
+        user: ユーザー
+        blog: ブログ
+        created_at: 登録日時
+        updated_at: 更新日時
   views:
     pagination:
       first: 最初
