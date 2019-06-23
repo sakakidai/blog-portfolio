@@ -13,10 +13,11 @@ ActiveAdmin.register User do
     column :avatar do |image|
       image.top_image.url.present? ? image_tag(image.avatar.thumb.url) : content_tag(:span, "イメージがありません")
     end
+    column :favarite_blogs
     actions
   end
 
-  show do |item_image|
+  show do
     attributes_table do
       row :name
       row :email
@@ -28,6 +29,7 @@ ActiveAdmin.register User do
         image.top_image.url.present? ? image_tag(image.avatar.thumb.url) : content_tag(:span, "イメージがありません")
       end
     end
+    active_admin_comments
   end 
 
   filter :name
