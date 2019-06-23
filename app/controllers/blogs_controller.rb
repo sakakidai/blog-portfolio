@@ -23,9 +23,6 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    
-    binding.pry
-    
     if @blog.save
       flash[:success] = "#{@blog.title} を作成しました。"
       redirect_to @blog
