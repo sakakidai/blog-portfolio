@@ -24,6 +24,7 @@ ja:
         color: 文字色
         avatar: プロフィール画像
         top_image: 背景画像
+        favarite_blogs: いいねしたブログ
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"

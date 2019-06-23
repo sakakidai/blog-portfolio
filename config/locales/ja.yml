@@ -6,6 +6,8 @@ ja:
         title: タイトル
         body: 記事の内容
         user: ユーザー
+        categories: カテゴリー
+        images: 画像(複数)
         created_at: 登録日時
         updated_at: 更新日時
       image:
@@ -17,6 +19,7 @@ ja:
         blog: ブログ
       category:
         name: カテゴリー
+        blogs: ブログ
         created_at: 登録日時
         updated_at: 更新日時
   views:
