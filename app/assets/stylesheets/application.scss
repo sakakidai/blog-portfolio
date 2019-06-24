@@ -126,12 +126,24 @@
   transition: 1s;
 }
 
+.btn-follow {
+  float: right;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: 0.5s;
+}
+
+.btn-unfollow {
+  float: right;
+  transition: 0.5s;
+}
+
 // アバターイメージ
 .avatar-image {
   width: 100%;
   border: 1px solid lightgray;
   border-radius: 2%;
-  transition: 0.9s;
+  transition: 0.5s;
   padding: 3px;
 }
 
@@ -143,8 +155,8 @@
 
 .triangle {
   background: #fafafa;
-  width: 250px;
-  height: 250px;
+  width: auto;
+  height: auto;
   border: #eee 1px solid;
   margin: 0 auto;
   position: relative;
@@ -159,7 +171,6 @@
   position: absolute;
   z-index: 100;
 }
-
 .triangle-font {
   display: block;
   top: 5px;
@@ -169,7 +180,6 @@
   position: absolute;
   z-index: 101;
 }
-  
 
 // ブログイメージ
 .blog-image {

@@ -1,4 +1,4 @@
-<%= render "shared/default_top_image" %>
+<%= render "shared/default_top_image", sub_title: "トップページ" %>
 
 <div class='container'>
   <% if @post_ranking != nil %>
@@ -7,7 +7,7 @@
       <div class='row'>
         <% @post_ranking.each do |user| %>
           <div class='col-lg-3 col-6'>
-            <%= render partial: 'users/user_new', locals: { user: user, object: @post_ranking }%>
+            <%= render partial: 'users/user', locals: { user: user, object: @post_ranking }%>
           </div>
         <% end %>
       </div>

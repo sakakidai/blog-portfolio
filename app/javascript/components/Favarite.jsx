@@ -77,7 +77,7 @@ class Favarite extends React.Component {
 
     return (
       <React.Fragment>
-        <span 
+        <span
           // className={ className }
           onClick={ isFavariting ? this.unfavarite : this.favarite } 
           disabled={ this.state.loading } 

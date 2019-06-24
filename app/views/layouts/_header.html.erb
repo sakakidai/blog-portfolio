@@ -30,8 +30,8 @@
             <%= current_user.email %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">フォロー</a>
-            <a class="dropdown-item" href="#">フォロワー</a>
+            <%= link_to "フォロー", follows_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "フォロワー", followers_user_path(current_user), class: "dropdown-item" %>
             <%= link_to "プロフィール", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %>
           </div>

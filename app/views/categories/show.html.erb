@@ -1,13 +1,10 @@
-<%= render "shared/default_top_image" %>
+<%= render "shared/default_top_image", sub_title: "カテゴリー" %>
 
 <div class='container'>
   <div class='row'>
     <div class='col-8'>
       <h1>
         カテゴリー：<%= link_to @category.name, category_path(@category) %>
-        <%= render partial: 'shared/edit_btn', locals: { path: edit_category_path(@category) } %>
-        <%= render partial: 'shared/delete_btn', locals: { path: category_path(@category), 
-                                                confirm: @category.name } %>
       </h1>
       <%= render @blogs %>
       <%= paginate @blogs %>

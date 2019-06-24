@@ -1,10 +1,10 @@
-<%= render "shared/default_top_image" %>
+<%= render "shared/default_top_image", sub_title: "ユーザー一覧" %>
 
 <div class='container'>
   <div class='row'>
     <% @users.each do |user| %>
       <div class='col-lg-3 col-6'>
-        <%= render partial: 'users/user_new', locals: { user: user, object: @users }%>
+        <%= render partial: 'users/user', locals: { user: user, object: @users }%>
       </div>
     <% end %>
   </div>
