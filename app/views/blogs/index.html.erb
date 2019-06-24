@@ -7,7 +7,7 @@
       <div class='row'>
         <% @post_ranking.each do |user| %>
           <div class='col-lg-3 col-6'>
-            <%= render 'users/ranking_avatar_image', user: user %>
+            <%= render partial: 'users/user_new', locals: { user: user, object: @post_ranking }%>
           </div>
         <% end %>
       </div>
@@ -20,20 +20,7 @@
       <div class='row'>
         <% @favarite_ranking.each do |blog| %>
           <div class='col-lg-3 col-6'>
-            <%= render 'blogs/ranking_blog_image', blog: blog %>
-            <h5><%= link_to blog.title, blog_path(blog) %></h5>
-            <small><%= blog.created_at.to_s(:datetime_jp) %></small> / 
-            <small><%= link_to blog.user.name, user_path(blog.user) %></small><br>
-            <%if blog.categories.present? %>
-              <% blog.categories.each do |category| %>
-                <small>[<%=link_to category.name, category_path(category) %>]</small>
-              <% end %>
-            <% end %>
-            <%= render "favarites/favarite", blog: blog %>
-            <span>
-              <%= icon("far", "comment") %> :
-              <%= blog.comments.count %> コメント
-            </span>
+            <%= render "blogs/favarite_ranking", blog: blog %>
           </div>
         <% end %>
       </div>
@@ -52,18 +39,16 @@
       
       <div class='col-md-4'>
         <h2>カテゴリー一覧</h2>
-        <% @categories.each do |category| %>
-          
-            <%= link_to category_path(category), class: 'btn btn-sm btn-category mr-3 mt-3' do %>
-            <%= category.name %>
-            (<%= category.blogs.count %>)
-            <% end %>
-        
+        <% @categories.each do |category| %>     
+          <%= link_to category_path(category), class: 'btn btn-sm btn-category mr-3 mt-3' do %>
+          <%= category.name %>
+          (<%= category.blogs.count %>)
+          <% end %>
         <% end %>
 
         <h2 class='mt-5'>写真のある投稿</h2>
         <% @picture_having_blogs.each do |blog| %>
-        <div class='row mt-3'>
+          <div class='row mt-3'>
             <div class='col-4'>
               <%= link_to blog_path(blog) do %>
                 <%= image_tag blog.first_img, class: "avatar-image" if blog.first_img? %>
@@ -75,7 +60,7 @@
                 <small><%= blog.created_at.to_s(:datetime_jp) %></small>
               </div>
             </div>
-        </div>
+          </div>
         <% end %>
       </div>
     </div>

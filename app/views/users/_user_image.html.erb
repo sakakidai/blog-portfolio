@@ -1,0 +1,9 @@
+<% if user.avatar_img? %>
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.avatar_img, class: 'avatar-image' %>
+    <% end %>
+<% else %>
+    <%= link_to user_path(user) do %>
+      <%= image_tag "avatar-image.jpg", class: "avatar-image" %>
+    <% end %>
+<% end %>
