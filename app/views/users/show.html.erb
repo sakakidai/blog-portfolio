@@ -7,26 +7,8 @@
       <%= paginate @blogs %>
     </div>
     <div class="col-md-4 d-none d-md-block">
-      <%= render 'user', user: @user %>
-      <h5 class='mt-5'>いいね！！した記事</h5>
-      <% @user.favarite_blogs.each do |blog| %>
-          <div class='row mt-3'>
-            <div class='col-4'>
-              <% if blog.images? %>
-                <%= image_tag blog.first_img, class: "avatar-image" if blog.first_img? %>
-              <% else %>
-                <%= render 'users/avatar_img', user: blog.user %>
-              <% end %>
-            </div>
-            <div class='col-8'>
-              <div class='lie-container'>
-                <small><%= link_to blog.title, blog_path(blog) %></small><br>
-                <small><%= blog.created_at %></small>
-              </div>
-            </div>
-          </div>
-          
-      <% end %>
+      <%= render partial: 'users/user_new', locals: { user: @user, object: "" }%>
+      <%= render "favarite_blogs", user: @user %>
     </div>
   </div>
 </div>

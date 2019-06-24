@@ -1,0 +1,13 @@
+<h5><%= link_to blog.title, blog_path(blog) %></h5>
+<small><%= blog.created_at.to_s(:datetime_jp) %></small> / 
+<small><%= link_to blog.user.name, user_path(blog.user) %></small><br>
+<%if blog.categories.present? %>
+  <% blog.categories.each do |category| %>
+    <small>[<%=link_to category.name, category_path(category) %>]</small>
+  <% end %>
+<% end %>
+<%= render "favarites/favarite", blog: blog %>
+<span>
+  <%= icon("far", "comment") %> :
+  <%= blog.comments.count %> コメント
+</span>
