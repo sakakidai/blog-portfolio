@@ -8,6 +8,9 @@
     <% end %>
   <% else %>
     <h1>Blog Portfolio</h1>
+    <% if user_signed_in? %>
+      <%= content_tag("h3", "#{sub_title}") %>
+    <% end %>
   <% end %>
   </div>
 </div>

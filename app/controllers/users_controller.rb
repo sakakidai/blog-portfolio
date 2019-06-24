@@ -10,4 +10,14 @@ class UsersController < ApplicationController
     @blogs = @user.blogs.recent.page(params[:page]).per(10)
     @comment = Comment.new
   end
+
+  def follows
+    @user = User.find(params[:id])
+    @users = @user.followings.recent.page(params[:page]).per(12)
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers.recent.page(params[:page]).per(12)
+  end
 end

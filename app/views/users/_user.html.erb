@@ -1,9 +1,6 @@
 <% if object == @post_ranking %>
-  <div class='triangle d-none d-sm-block'>
+  <div class='triangle'>
     <%= content_tag(:div, "#{ object.index(user) + 1 }", class: 'triangle-font') %>
-    <%= render partial: 'users/user_image', locals: { user: user, object: object }%>
-  </div>
-  <div class='d-block d-sm-none'>
     <%= render partial: 'users/user_image', locals: { user: user, object: object }%>
   </div>
 <% else %>

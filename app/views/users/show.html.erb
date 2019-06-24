@@ -1,4 +1,4 @@
-<%= render 'users/user_top_image', user: @user %>
+<%= render partial: "users/user_top_image", locals: { user: @user, sub_title: "オフィシャルブログ" } %>
 
 <div class='container'>
   <div class="row">
@@ -7,7 +7,7 @@
       <%= paginate @blogs %>
     </div>
     <div class="col-md-4 d-none d-md-block">
-      <%= render partial: 'users/user_new', locals: { user: @user, object: "" }%>
+      <%= render partial: 'users/user', locals: { user: @user, object: "" }%>
       <%= render "favarite_blogs", user: @user %>
     </div>
   </div>

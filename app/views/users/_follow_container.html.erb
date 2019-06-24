@@ -1,0 +1,12 @@
+<%= render partial: "users/user_top_image", locals: { user: @user, sub_title: sub_title } %>
+<div class='container'>
+  <div class='row'>
+    <% users.each do |user| %>
+      <div class='col-lg-3 col-6'>
+        <%= render partial: 'users/user_image', locals: { user: user }%>
+        <%= render 'users/user_container', user: user %>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate users %>
+</div>

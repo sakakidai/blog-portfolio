@@ -1,5 +1,4 @@
-<%= render 'users/user_top_image', user: @blog.user %>
-
+<%= render partial: "users/user_top_image", locals: { user: @blog.user, sub_title: "ブログ記事"} %>
 <div class='container'>
   <div class='row'>
     <div class='col-md-8'>

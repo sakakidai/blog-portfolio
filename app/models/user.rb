@@ -12,9 +12,17 @@ class User < ApplicationRecord
   has_many :favarites, dependent: :destroy
   has_many :favarite_blogs, through: :favarites, source: :blog
   has_many :comments, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
 
   scope :recent_5, -> { limit(5).recent }
   
+  def followed_by?(user)
+    passive_relationships.find_by(following_id: user.id).present?
+  end
+
   private
 
   def avatar_size
@@ -28,4 +36,6 @@ class User < ApplicationRecord
       errors.add(:top_image, "should be less than 5MB")
     end
   end
+
+  
 end

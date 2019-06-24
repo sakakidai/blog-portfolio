@@ -4,12 +4,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: "blogs#index"
   get "home", to:"home#index" 
-  resources :categories, except: [:update, :edit, :destroy]
+  resources :categories, except: %i[update edit destroy]
   resources :blogs do
-    resource :favarites, only: [:create, :destroy]
-    resource :comments, only: [:create, :destroy]
+    resource :favarites, only: %i[create destroy]
+    resource :comments, only: %i[create destroy]
   end
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show] do
+    resource :relationships, only: %i[create destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
   devise_for :users, path: "/", path_names: { sign_in:  "login", 
                                               sign_out: "logout", 
                                               sign_up:  "signup" 

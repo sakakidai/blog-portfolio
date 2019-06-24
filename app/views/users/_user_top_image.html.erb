@@ -2,6 +2,7 @@
   <div class='jumbotron jumbotron-fluid jumbotron-top' style="background-image: url(<%= user.top_image.large.url %>);">
     <div class="container jumbotron-container">
       <h1><%= user.name %></h1>
+      <%= content_tag("h3", "#{ sub_title }") %>
     </div>
   </div>
 <% else %>
