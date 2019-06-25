@@ -38,6 +38,8 @@ group :development, :test do
   #追加したgem
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rspec-rails', '~> 3.8'
+  gem "factory_bot_rails", "~> 4.10.0"
 end
 
 group :development do
@@ -51,6 +53,7 @@ group :development do
   #追加したgem
   gem 'letter_opener'
   gem 'letter_opener_web'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
