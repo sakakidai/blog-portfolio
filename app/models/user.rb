@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :name, presence: true, length: {minimum: 2, maximum: 20}
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :email, length: { maximum: 255 }
   validate :avatar_size
   validate :top_image_size
   mount_uploader :avatar, PictureUploader
