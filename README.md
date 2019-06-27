@@ -9,9 +9,9 @@
 URL
 https://sakaki-blog-portfolio.herokuapp.com
 
-テストユーザー
-email: sample@example.com
-password: password
+テストユーザー  
+email: `sample@example.com`  
+password: `password`  
 
 
 ## 実行環境
@@ -20,7 +20,6 @@ password: password
 - Database :PostgreSQL :11.3
 - image file upload :S3
 - Deployment :heroku
-- Installing :webpacker, :react, :react-fontawesome, :react-color, :classnames
 
 ## 機能一覧
 - プロフィール / 作成・編集・削除
@@ -34,7 +33,7 @@ password: password
 - フォロー・フォロワー / 追加・削除
 - ページネーション / プロフィール・ブログ・カテゴリー（kaminari)
 - ランキング / 投稿数・いいね数
-- カラーピッカー / フォント色の選択(react-color)
+- カラーピッカー / フォント色の選択
 - 日本語化(i18n)
 
 ## 使い方
@@ -50,9 +49,9 @@ https://sakaki-blog-portfolio.herokuapp.com
 
 もちろん、サインアップ、ログインをすることが出来ます。テストユーザーを用意していますのでそちらをご利用ください。
 
-テストユーザー
-- email: sample@example.com
-- password: password
+テストユーザー  
+email: `sample@example.com`  
+password: `password`  
 
 ### ログインした状態
 ログインしていない時に使えた部分 +
