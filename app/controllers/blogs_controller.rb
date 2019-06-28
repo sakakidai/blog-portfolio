@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
+  before_action :require_some_user, only: %i[edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
   
   def index
@@ -57,5 +58,12 @@ class BlogsController < ApplicationController
 
   def set_blog
     @blog = Blog.find(params[:id])
+  end
+
+  def require_some_user
+    unless current_user == @blog.user
+      flash[:danger] = "権限がありません"
+      redirect_to root_path
+    end
   end
 end
