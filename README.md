@@ -16,9 +16,10 @@ password: `password`
 
 ## 実行環境
 - Ruby version :ruby 2.6.2
-- framework :Rails 5.2.3
+- Framework :Rails 5.2.3
 - Database :PostgreSQL :11.3
-- image file upload :S3
+- Image file upload :S3
+- Test-framework :RSpec
 - Deployment :heroku
 
 ## 機能一覧
