@@ -57,12 +57,12 @@ RSpec.describe BlogsController, type: :controller do
   describe "#edit" do
     context "ログインユーザーのとき" do
       it "正常にレスポンスを返す" do
-        sign_in(blog.user)
+        sign_in(user)
         get :edit, params: { id: blog.id }
         expect(response).to be_successful
       end
       it "200レスポンスを返す" do
-        sign_in(blog.user)
+        sign_in(user)
         get :edit, params: { id: blog.id }
         expect(response).to have_http_status "200"
       end
@@ -120,6 +120,95 @@ RSpec.describe BlogsController, type: :controller do
       it "ログイン画面にリダイレクトする" do
         post :create
         expect(response).to redirect_to "/login"
+      end
+    end
+  end
+
+  describe "#update" do
+    context "ログインユーザーのとき" do
+      it "ブログを更新する" do
+        sign_in(user)
+        blog_params = {title: "テスト4"}
+        patch :update, params: { id: blog.id, blog: blog_params }
+        expect(blog.reload.title).to eq "テスト4"
+      end
+    end
+    context "ログインユーザーでないとき" do
+      it "ブログを更新できない" do
+        blog_params = {title: "テスト4"}
+        patch :update, params: { id: blog.id, blog: blog_params }
+        expect(blog.reload.title).to_not eq "テスト4"
+      end
+
+      it "302レスポンスを返す" do
+        blog_params = {title: "テスト4"}
+        patch :update, params: { id: blog.id, blog: blog_params }
+        expect(response).to have_http_status "302"
+      end
+
+      it "ログイン画面にリダイレクトされる" do
+        blog_params = {title: "テスト4"}
+        patch :update, params: { id: blog.id, blog: blog_params }
+        expect(response).to redirect_to "/login"
+      end
+    end
+    context "ユーザーが作成したユーザーと異なるとき" do
+      it "302レスポンスを返す" do
+        sign_in(other_user)
+        blog_params = {title: "テスト4"}
+        patch :update, params: { id: blog.id, blog: blog_params }
+        expect(response).to have_http_status "302"
+      end
+
+      it "ルートページにリダイレクトする" do
+        sign_in(other_user)
+        blog_params = {title: "テスト4"}
+        patch :update, params: { id: blog.id, blog: blog_params }
+        expect(response).to redirect_to "/"
+      end
+    end
+  end
+
+  describe "#destroy" do
+    context "ログインユーザーのとき" do
+      it "ブログを削除出来る" do
+        sign_in(user)
+        blog = FactoryBot.create(:blog, user: user)
+        expect { 
+          delete :destroy, params: { id: blog.id } 
+        }.to change(user.blogs, :count).by(-1)
+      end
+    end
+
+    context "ログインユーザーでないとき" do
+      it "ブログを削除できない" do
+        blog = FactoryBot.create(:blog, user: user)
+        expect { 
+          delete :destroy, params: { id: blog.id } 
+        }.to change(Blog, :count).by(0)
+      end
+
+      it "302レスポンスを返す" do
+        delete :destroy, params: { id: blog.id } 
+        expect(response).to have_http_status "302"
+      end
+
+      it "ログイン画面にリダイレクトされる" do
+        delete :destroy, params: { id: blog.id } 
+        expect(response).to redirect_to "/login"
+      end
+    end
+    context "ユーザーが作成したユーザーと異なるとき" do
+      it "302レスポンスを返す" do
+        sign_in(other_user)
+        delete :destroy, params: { id: blog.id }
+        expect(response).to have_http_status "302"
+      end
+
+      it "ルートページにリダイレクトする" do
+        sign_in(other_user)
+        delete :destroy, params: { id: blog.id }
+        expect(response).to redirect_to "/"
       end
     end
   end
