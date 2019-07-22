@@ -12,7 +12,8 @@ module DeviseWhitelist
     )
     devise_parameter_sanitizer.permit(
       :account_update,
-      keys: %i[name avatar top_image color remove_top_image remove_avatar]
+      keys: %i[name avatar top_image color remove_top_image
+               remove_avatar website bio]
     )
   end
 end

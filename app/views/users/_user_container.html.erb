@@ -21,7 +21,7 @@
 </p>
 
 <p class="mb-0">作成した記事：<%= user.blogs.count %>個</p>
-<div class='row mt-2 mb-2'>
+<div class='row'>
   <% if user.blogs.present? %>
     <% if user.blogs.last.first_img? %>
       <div class='col-4'>
@@ -43,3 +43,4 @@
     <% end %>
   <% end %>
 </div>
+

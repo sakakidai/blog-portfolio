@@ -2,12 +2,25 @@
 
 <div class='container'>
   <div class="row">
+    <div class="col-md-4 d-md-none">
+      <div class='row'>
+        <div class='col-4'>
+          <%= render partial: 'users/user_image', locals: { user: @user }%>
+        </div>
+        <div class='col-8'>
+          <%= render 'users/user_container', user: @user %>
+        </div>
+      </div>
+      <%= render 'users/profile_contents', user: @user %>
+    </div>
+
     <div class="col-md-8">
       <%= render @blogs %>
       <%= paginate @blogs %>
     </div>
+
     <div class="col-md-4 d-none d-md-block">
-      <%= render partial: 'users/user', locals: { user: @user, object: "" }%>
+      <%= render partial: 'users/user', locals: { user: @user, object: "" } %>
       <%= render "favarite_blogs", user: @user %>
     </div>
   </div>

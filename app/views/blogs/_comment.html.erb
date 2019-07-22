@@ -7,8 +7,8 @@
       </div>
       <div class='col-10'>
         <div class='lie-container'>
-          <strong><%= link_to comment.user.name, user_path(comment.user) %> :</strong>
-          <%= comment.content %>
+          <strong><%= link_to comment.user.name, user_path(comment.user) %> :</strong><br>
+          <%= br(comment.content) %>
           <% if user_signed_in? && current_user == comment.user %>
             <%= render partial: 'shared/small_delete_btn', locals: { path: blog_comments_path(blog.id) } %>
           <% end %>
