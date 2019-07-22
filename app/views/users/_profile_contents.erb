@@ -1,0 +1,14 @@
+<% if controller.action_name == 'show' %>
+<div class='row'>
+  <div class='col-12'>
+    <% if user.bio.present? %>
+      <h5 class='mt-3'>自己紹介</h5>
+      <%= auto_link(br(user.bio), html: { target: '_blank' }) %>
+    <% end %>
+    <% if user.website.present? %>
+      <h5 class='mt-3'>関連サイト</h5>
+      <%= auto_link(br(user.website), html: { target: '_blank' }) %>
+    <% end %>
+  </div>
+</div>
+<% end %>
