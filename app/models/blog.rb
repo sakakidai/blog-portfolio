@@ -13,7 +13,7 @@ class Blog < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   scope :recent, -> { order(updated_at: :desc) }
-  scope :post_ranking, -> { group(:user_id).order(Arel.sql("count(user_id) desc")).limit(4).pluck(:user_id) }
+  scope :post_ranking, -> { group(:user_id).order(Arel.sql('count(user_id) desc')).limit(4).pluck(:user_id) }
 
   def favarited_by?(user)
     favarites.find_by(user_id: user.id).present?

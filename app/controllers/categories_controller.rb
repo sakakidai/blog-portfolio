@@ -18,14 +18,13 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
   end
-  
+
   def show
     @blogs = @category.blogs.page(params[:page]).per(10)
     @comment = Comment.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)

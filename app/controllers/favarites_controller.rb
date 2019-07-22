@@ -9,7 +9,8 @@ class FavaritesController < ApplicationController
   end
 
   def destroy
-    @favarite = Favarite.find_by(blog_id: params[:blog_id], user_id: current_user.id)
+    @favarite = Favarite.find_by(blog_id: params[:blog_id],
+                                 user_id: current_user.id)
     @favarite.destroy
     respond_to do |format|
       format.html { redirect_to blogs_path }
