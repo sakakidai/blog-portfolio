@@ -6,6 +6,6 @@ module DefaultPageContent
   end
 
   def set_title
-    @page_title = 'Blog Portfolio'
+    @page_title = "Blog Portfolio"
   end
 end

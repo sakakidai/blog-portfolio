@@ -1,11 +1,8 @@
 <%= render partial: "users/user_top_image", locals: { user: @blog.user, sub_title: "ブログ記事"} %>
 <div class='container'>
   <div class='row'>
-    <div class='col-md-8'>
+    <div class='col-md-8 offset-md-2'>
       <%= render "blog", blog: @blog %>
-    </div>
-    <div class='col-md-4'>
-
     </div>
   </div>
 </div>
