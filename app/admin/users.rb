@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :color, :avatar, :top_image, :email, :password, :admin
+  permit_params :name, :color, :avatar, :top_image, :email, :admin
 
   index do
     selectable_column
@@ -50,3 +50,4 @@ ActiveAdmin.register User do
     f.actions
   end
 end
+

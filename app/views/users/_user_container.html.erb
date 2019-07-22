@@ -23,21 +23,21 @@
 <p class="mb-0">作成した記事：<%= user.blogs.count %>個</p>
 <div class='row mt-2 mb-2'>
   <% if user.blogs.present? %>
-    <% if user.blogs.first.first_img? %>
+    <% if user.blogs.last.first_img? %>
       <div class='col-4'>
-        <%= image_tag user.blogs.first.first_img, class: "avatar-image" if user.blogs.first.first_img? %>
+        <%= image_tag user.blogs.last.first_img, class: "avatar-image" if user.blogs.last.first_img? %>
       </div>
       <div class='col-8'>
         <div class='lie-container'>
-          <small><%= link_to user.blogs.first.title, blog_path(user.blogs.first) %></small><br>
-          <small><%= user.blogs.first.created_at.to_s(:datetime_jp) %></small>
+          <small><%= link_to user.blogs.last.title, blog_path(user.blogs.last) %></small><br>
+          <small><%= user.blogs.last.created_at.to_s(:datetime_jp) %></small>
         </div>
       </div>
     <% else %>
       <div class='col-12'>
         <div class='lie-container'>
-          </small><%= link_to user.blogs.first.title, blog_path(user.blogs.first) %></small><br>
-          <small><%= user.blogs.first.created_at.to_s(:datetime_jp) %></small>
+          </small><%= link_to user.blogs.last.title, blog_path(user.blogs.last) %></small><br>
+          <small><%= user.blogs.last.created_at.to_s(:datetime_jp) %></small>
         </div>
       </div>
     <% end %>

@@ -45,7 +45,8 @@ ActiveAdmin.register Blog do
     end
     f.inputs do
       f.has_many :images, heading: 'Images', allow_destroy: true, new_record: true do |image|
-      image.input :picture, :hint => image.object.picture.present? ? image_tag(image.object.picture.thumb.url) : content_tag(:span, "まだイメージがありません。")
+        image.input :title
+        image.input :picture, :hint => image.object.picture.present? ? image_tag(image.object.picture.thumb.url) : content_tag(:span, "まだイメージがありません。")
       end
     end
     f.actions

@@ -23,10 +23,8 @@
       <%= blog.comments.count %> コメント
     </span>
   </div>
-
   <br>
-  <p><%= auto_link(simple_format(h(blog.body), {}, sanitize: false, wrapper_tag: "div"),
-                              html: {target: '_blank'}) %></p>
+  <p><%= auto_link(br(blog.body), html: { target: '_blank' }) %></p>
   <% if blog.images? %>
     <% blog.images.each do |image| %>
       <h5 class='mt-4'><%= image.title %></h5>

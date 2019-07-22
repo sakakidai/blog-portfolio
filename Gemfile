@@ -22,7 +22,7 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'devise-i18n-views'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'mini_magick', "~> 4.9.4 "
 gem "nested_form"
 gem 'kaminari'
 gem 'font-awesome-sass', '~> 5.4.1'

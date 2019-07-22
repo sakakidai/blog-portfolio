@@ -40,6 +40,7 @@ ja:
       user: "ユーザー"
       comment: "コメント"
       admin_user: "管理者ユーザー"
+      admin_comment: "管理者のコメント"
       blog: "ブログ"
       category: "カテゴリー"
       image: "ブログの画像"

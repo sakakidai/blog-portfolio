@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
   before_action :require_some_user, only: %i[edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
-  
+
   def index
     @blogs = Blog.recent.page(params[:page]).per(5)
     @picture_having_blogs = Blog.find(Image.picture_having)
@@ -11,11 +11,11 @@ class BlogsController < ApplicationController
     @favarite_ranking = Blog.find(Favarite.iine_ranking)
     @comment = Comment.new
   end
-  
+
   def show
     @comment = Comment.new
   end
-  
+
   def new
     @blog = Blog.new
     @image = @blog.images.build
@@ -52,8 +52,12 @@ class BlogsController < ApplicationController
   end
 
   private
+
   def blog_params
-    params.require(:blog).permit(:title, :body, category_ids: [], images_attributes: [:id, :title, :picture, :_destroy])
+    params.require(:blog).permit(:title,
+                                 :body,
+                                 category_ids: [],
+                                 images_attributes: %i[id title picture _destroy])
   end
 
   def set_blog
@@ -62,7 +66,7 @@ class BlogsController < ApplicationController
 
   def require_some_user
     unless current_user == @blog.user
-      flash[:danger] = "権限がありません"
+      flash[:danger] = '権限がありません'
       redirect_to root_path
     end
   end

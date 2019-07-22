@@ -1,4 +1,5 @@
 ActiveAdmin.register Image do
+  permit_params :tiele, :picture
 
   show do |item_image|
     attributes_table do
