@@ -54,14 +54,15 @@ $( document ).on('turbolinks:load', function() {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          $('#blog_image_prev').attr('src', e.target.result);
+          $("#blog_image_prev_1").attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
       }
     }
-    $("#blog_image").change(function(){
+    $("#blog_image_1").change(function(){
       readURL(this);
     });
   });
-  
 });
+
+

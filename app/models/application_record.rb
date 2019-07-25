@@ -1,4 +1,5 @@
 class ApplicationRecord < ActiveRecord::Base
+  attr_accessor :image_index
   self.abstract_class = true
 
   scope :recent, -> { order(updated_at: :desc) }
