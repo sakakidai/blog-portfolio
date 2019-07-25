@@ -24,7 +24,7 @@
     </span>
   </div>
   <br>
-  <p><%= auto_link(br(blog.body), html: { target: '_blank' }) %></p>
+  <%= auto_link(br(blog.body), :html => { :target => '_blank', :class => 'wrapper_link' }) %>
   <% if blog.images? %>
     <% blog.images.each do |image| %>
       <h5 class='mt-4'><%= image.title %></h5>

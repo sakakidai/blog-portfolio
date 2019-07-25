@@ -53,7 +53,7 @@ module ApplicationHelper
   end
 
   def br(str)
-    html_escape(str).gsub(/\r\n|\r|\n/, '<br />').html_safe
+    html_escape(str).to_str.gsub(/\R/, '<br />').html_safe
   end
 
 end
